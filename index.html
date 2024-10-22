@@ -8,13 +8,17 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Subscribe to our Newsletter</h1>
-    <form id="subscribe-form">
-      <input type="email" id="email" placeholder="Enter your email" required />
-      <button type="submit">Subscribe</button>
-    </form>
+    <main>
+      <section>
+        <h1>Subscribe to our Newsletter</h1>
+        <form id="subscribe-form">
+          <input  type="email"  id="email"  placeholder="Enter your email"  required  autofocus inputmode="email" />
+          <button type="submit">Subscribe</button>
+        </form>
 
-    <p id="response-message"></p>
+        <p id="response-message" aria-live="polite"></p>
+      </section>
+    </main>
 
     <!-- Link to external JS file -->
     <script src="script.js"></script>

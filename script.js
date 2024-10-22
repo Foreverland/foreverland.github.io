@@ -1,29 +1,27 @@
 document
   .getElementById("subscribe-form")
-  .addEventListener("submit", async function (e) {
+  .addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const email = document.getElementById("email").value;
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const emailInput = document.getElementById("email");
+    const email = emailInput.value;
 
-    // Simple email validation
-    if (!emailRegex.test(email)) {
+    // Use built-in validation instead of regex
+    if (!emailInput.checkValidity()) {
       document.getElementById("response-message").innerText =
         "Please enter a valid email.";
       return;
     }
 
-    // Optimistically update UI to give feedback quickly
     document.getElementById("response-message").innerText = "Processing...";
 
-    // Send the email to the backend (AWS Lambda via API Gateway)
     try {
       const response = await fetch(
         "https://9vpx1a5sb3.execute-api.eu-north-1.amazonaws.com/prod/subscribe",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: email }),
+          body: JSON.stringify({ email }),
         }
       );
 
@@ -33,7 +31,7 @@ document
           "Subscription successful!";
       } else {
         document.getElementById("response-message").innerText =
-          "Error: " + result.message;
+          `Error: ${result.message || 'Unknown error occurred'}`;
       }
     } catch (error) {
       document.getElementById("response-message").innerText =
