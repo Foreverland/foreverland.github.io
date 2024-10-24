@@ -8,17 +8,17 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main>
-      <section>
-        <h1>Subscribe to our Newsletter</h1>
+    <main class="container">
+      <section class="cta-section">
+        <p class="cta-text" data-locale="cta-text">Get notified when we launch, and enjoy early access along with an exclusive discount for early adopters</p>
         <form id="subscribe-form">
-          <input  type="email"  id="email"  placeholder="Enter your email"  required  autofocus inputmode="email" />
-          <button type="submit">Subscribe</button>
+          <div class="input-area">
+            <input type="email" id="email" placeholder="Email" required autofocus inputmode="email" />
+            <button class="notify-btn" type="submit" data-locale="subscribe-btn">Subscribe</button>
+          </div>
         </form>
-
-        <p id="response-message" aria-live="polite"></p>
       </section>
-    </main>
+    </main>    
 
     <!-- Link to external JS file -->
     <script src="script.js"></script>
